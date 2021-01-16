@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # 管理者ページ
   namespace :admin do
     root to: 'homes#top'
+    resources :items, except: [:destroy]
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
 
