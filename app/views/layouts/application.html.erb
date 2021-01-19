@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
   <ul>
     <% if admin_signed_in? %>
     <li>
@@ -19,6 +20,7 @@
       <% end %>
   </ul>
   <%= yield %>
+
 </body>
 
 </html>

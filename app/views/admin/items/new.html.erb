@@ -16,7 +16,7 @@
 
   <div>
     <label>
-      ジャンル<%= f.collection_select(:genre, @genres, :id, :name,) %>
+      ジャンル<%= f.collection_select(:genre_id, Genre.all, :id, :name, {:prompt => "選択してください"}) %>
     </label>
   </div>
 
