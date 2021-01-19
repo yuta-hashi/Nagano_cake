@@ -8,8 +8,8 @@
       <th>ステータス</th>
     </tr>
   </thead>
-  <% @items.each do |item| %>
   <tbody>
+    <% @items.each do |item| %>
     <tr>
       <td>
         <%= item.id %>
@@ -20,18 +20,17 @@
       <td>
         <%= item.price %>
       </td>
-      <%
-=begin%>
+
       <td>
         <%= item.genre.name %>
       </td>
-      <%
-=end%>
+
       <% if item.is_active == true %>
       <td>販売中</td>
       <% else %>
       <td>販売停止中</td>
       <% end %>
     </tr>
+    <% end %>
   </tbody>
-  <% end %>
+</table>

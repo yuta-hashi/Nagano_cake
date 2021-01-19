@@ -1,11 +1,12 @@
-<h3>ジャンル一覧・追加</h3>
 <div>
-  <%= form_with model:@genre, url: {controller: 'admin/genres'}, local:true do |f| %>
-  <label>ジャンル名<%= f.text_field :name %></label>
+  <%= form_with model:@genre, url: {controller: 'admin/genres', action: 'index'}, local:true do |f| %>
+  <label>ジャンル名<%=f.text_field :name %></label>
   <%= f.submit '新規登録' %>
   <% end %>
 </div>
 
+</label>
+</div>
 <div>
   <table>
     <thead>
@@ -13,13 +14,14 @@
         <th colspan="2">ジャンル</th>
       </tr>
     </thead>
-
     <tbody>
       <% @genres.each do |genre| %>
       <tr>
-        <td><%= genre.name %></td>
         <td>
-          <button><%= link_to '編集する', edit_admin_genre_path %></button>
+          <%= genre.name %>
+        </td>
+        <td>
+          <button><%= link_to '編集', edit_admin_genre_path(genre) %></button>
         </td>
       </tr>
       <% end %>
