@@ -1,6 +1,5 @@
-<h3>商品新規登録</h3>
 <div>
-  <%= form_with model:@item, url: {controller: 'admin/items', action: 'create'}, local:true do |f| %>
+  <%= form_with model:item, url: {controller: 'admin/items'}, local:true do |f| %>
 
   <div>
     <label>商品画像<%= f.attachment_field :image %></label>
@@ -32,6 +31,6 @@
     <%= f.label :is_active, "販売停止中", value: false %>
   </div>
 
-  <%= f.submit "新規登録" %>
+  <%= f.submit submit %>
   <% end %>
 </div>
