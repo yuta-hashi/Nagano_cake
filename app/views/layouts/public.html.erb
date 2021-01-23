@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NaganoCake</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <ul>
+    <% if customer_signed_in? %>
+    <li>
+      <%= "ようこそ、#{current_user.name}さん！" %>
+    </li>
+    <li>
+      <%= link_to "マイページ", customer_path(current_user.id) %>
+    </li>
+    <li>
+      <%= link_to "商品一覧", items_path %>
+    </li>
+    <li>
+      <%= link_to "カート", admin_items_path %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    <li>
+      <% else %>
+    <li>
+      <%= link_to "About", about_path %>
+    </li>
+    <li>
+      <%= link_to "商品一覧", items_path %>
+    </li>
+    <li>
+      <%= link_to "新規登録", new_customer_registration_path %>
+    </li>
+    <% end %>
+
+  </ul>
+  <%= yield %>
+</body>
+
+</html>
