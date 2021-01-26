@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
   # ユーザーページ
-  namespace :public do
+  scope module: :public do
     root to: 'homes#top'
     get 'about', to: 'homes#about'
-    resources :customers
+    devise_for :customers
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        post  'confirm', to: 'customers#confirm'
+        patch '', to: 'customers#withdrawal'
+      end
+    end
     resources :items, only: [:index, :show]
   end
   
@@ -17,11 +23,11 @@ Rails.application.routes.draw do
   
   
   #devise設定
-    devise_for :customers, controllers: {
-      sessions:      'customers/sessions',
-      passwords:     'customers/passwords',
-      registrations: 'customers/registrations',
-    }
+    # devise_for :customers, controllers: {
+    #   sessions:      'customers/sessions',
+    #   passwords:     'customers/passwords',
+    #   registrations: 'customers/registrations',
+    # }
     
   devise_for :admins, path: 'admin', controllers: {
     sessions:      'admins/sessions',
