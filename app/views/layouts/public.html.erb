@@ -11,8 +11,7 @@
 </head>
 
 <body>
-  <%
-=begin%>
+
   <ul>
     <% if customer_signed_in? %>
     <li>
@@ -43,8 +42,6 @@
     <% end %>
 
   </ul>
-  <%
-=end%>
   <%= yield %>
 </body>
 
